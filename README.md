@@ -29,7 +29,7 @@ cargo build --release
 Run the benchmark using the following command:
 
 ```
-cargo test --release
+cargo bench
 ```
 
 ## Running the correctness test
