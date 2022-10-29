@@ -1,5 +1,5 @@
 [package]
-name = "z-prize-msm-gpu"
+name = "blst-msm"
 version = "0.1.0"
 edition = "2021"
 

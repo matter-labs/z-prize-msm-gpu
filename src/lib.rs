@@ -81,7 +81,7 @@ pub struct MSMContext<'a> {
     stream_context_odd: StreamContext<'a>,
 }
 
-pub fn create_msm_context(bases: &[G1Affine]) -> MSMContext {
+pub fn multi_scalar_mult_init(bases: &[G1Affine]) -> MSMContext {
     let stream = CudaStream::default();
     let mem_pool = CudaOwnedMemPool::create_for_device(0).unwrap();
     mem_pool
@@ -122,7 +122,7 @@ pub fn create_msm_context(bases: &[G1Affine]) -> MSMContext {
     }
 }
 
-pub fn execute_batch_msm(context: &mut MSMContext, scalars: &[BigInteger256]) -> Vec<G1Projective> {
+pub fn multi_scalar_mult(context: &mut MSMContext, _bases: &[G1Affine], scalars: &[BigInteger256]) -> Vec<G1Projective> {
     let scalars_len = scalars.len();
     let mut scalars_type = pointer_get_attributes(&scalars).unwrap().type_;
     if scalars_type == CudaMemoryType::Unregistered && REGISTER_SCALARS {
